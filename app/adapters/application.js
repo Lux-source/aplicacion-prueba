@@ -13,11 +13,12 @@ export default class ApplicationAdapter extends RESTAdapter {
   pathForType(type) {
     // JSONPlaceholder usa nombres en plural
     const typeMap = {
-      'post': 'posts',
-      'album': 'albums',
-      'todo': 'todos',
-      'photo': 'photos',
-      'comment': 'comments'
+      article: 'posts',
+      post: 'posts',
+      album: 'albums',
+      todo: 'todos',
+      photo: 'photos',
+      comment: 'comments',
     };
     return typeMap[type] || super.pathForType(...arguments);
   }
