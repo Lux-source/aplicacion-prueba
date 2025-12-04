@@ -2,15 +2,31 @@ import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 
+// Credenciales de administrador
+const ADMIN_EMAIL = 'administrador@correo.com';
+const ADMIN_PASSWORD = 'Administrador';
+
 export default class SessionService extends Service {
     @service store;
     @service router;
 
     @tracked isAuthenticated = false;
     @tracked currentUser = null;
+    @tracked isAdmin = false;
 
     async login(email, password) {
-        // Mock authentication logic
+        // Check admin credentials first
+        if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
+            this.isAuthenticated = true;
+            this.isAdmin = true;
+            this.currentUser = { email: ADMIN_EMAIL, name: 'Administrador' };
+            localStorage.setItem('isAuthenticated', 'true');
+            localStorage.setItem('isAdmin', 'true');
+            localStorage.setItem('adminEmail', ADMIN_EMAIL);
+            return true;
+        }
+
+        // Mock authentication logic for regular users
         // In a real app, this would make an API call
 
         // Find user with matching email
@@ -60,16 +76,30 @@ export default class SessionService extends Service {
     logout() {
         this.isAuthenticated = false;
         this.currentUser = null;
+        this.isAdmin = false;
         localStorage.removeItem('isAuthenticated');
         localStorage.removeItem('currentUserId');
         localStorage.removeItem('authToken');
+        localStorage.removeItem('isAdmin');
+        localStorage.removeItem('adminEmail');
         this.router.transitionTo('index');
     }
 
     async restore() {
         const isAuth = localStorage.getItem('isAuthenticated');
+        const isAdminStored = localStorage.getItem('isAdmin');
+        const adminEmail = localStorage.getItem('adminEmail');
         const userId = localStorage.getItem('currentUserId');
 
+        // Restore admin session
+        if (isAuth && isAdminStored && adminEmail === ADMIN_EMAIL) {
+            this.isAuthenticated = true;
+            this.isAdmin = true;
+            this.currentUser = { email: ADMIN_EMAIL, name: 'Administrador' };
+            return;
+        }
+
+        // Restore regular user session
         if (isAuth && userId) {
             try {
                 const user = await this.store.findRecord('user', userId);

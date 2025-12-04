@@ -173,4 +173,70 @@ export default class CarsService extends Service {
   getExtras() {
     return this.extras;
   }
+
+  // ========== CRUD Methods ==========
+  
+  /**
+   * CREATE - Añadir nuevo vehículo
+   */
+  addVehicle(vehicleData) {
+    const newId = Math.max(...this.vehicles.map(v => v.id)) + 1;
+    const newVehicle = {
+      id: newId,
+      ...vehicleData,
+      year: vehicleData.year || 2024,
+      featured: vehicleData.featured || false,
+      emoji: this.getEmojiForType(vehicleData.type)
+    };
+    this.vehicles = [...this.vehicles, newVehicle];
+    return newVehicle;
+  }
+
+  /**
+   * UPDATE - Actualizar vehículo existente
+   */
+  updateVehicle(id, vehicleData) {
+    const index = this.vehicles.findIndex(v => v.id === id);
+    if (index !== -1) {
+      const updatedVehicle = {
+        ...this.vehicles[index],
+        ...vehicleData,
+        emoji: this.getEmojiForType(vehicleData.type || this.vehicles[index].type)
+      };
+      this.vehicles = [
+        ...this.vehicles.slice(0, index),
+        updatedVehicle,
+        ...this.vehicles.slice(index + 1)
+      ];
+      return updatedVehicle;
+    }
+    return null;
+  }
+
+  /**
+   * DELETE - Eliminar vehículo
+   */
+  deleteVehicle(id) {
+    const index = this.vehicles.findIndex(v => v.id === id);
+    if (index !== -1) {
+      this.vehicles = [
+        ...this.vehicles.slice(0, index),
+        ...this.vehicles.slice(index + 1)
+      ];
+      return true;
+    }
+    return false;
+  }
+
+  /**
+   * Helper - Obtener emoji según tipo
+   */
+  getEmojiForType(type) {
+    const emojis = {
+      'Deportivo': '🏎️',
+      'SUV': '🚙',
+      'Sedán': '🚗'
+    };
+    return emojis[type] || '🚘';
+  }
 }
