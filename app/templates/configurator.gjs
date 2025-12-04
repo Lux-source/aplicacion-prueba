@@ -21,8 +21,8 @@ import { LinkTo } from '@ember/routing';
     {{! Configurator Section }}
     <section class="section section--light">
       <div class="container">
-        <VehicleConfigurator 
-          @vehicles={{@model.vehicles}} 
+        <VehicleConfigurator
+          @vehicles={{@model.vehicles}}
           @colorOptions={{@model.colorOptions}}
           @extras={{@model.extras}}
         />

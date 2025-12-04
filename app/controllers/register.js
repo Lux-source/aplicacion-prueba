@@ -1,9 +1,7 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
-import { inject as service } from '@ember/service';
-
-// Implementacion P4
+import { inject as service } from '@ember/service';
 export default class RegisterController extends Controller {
     @service router;
     @tracked name = '';
@@ -19,15 +17,13 @@ export default class RegisterController extends Controller {
 
     @action
     async register(event) {
-        event.preventDefault();
-        // Mock registration logic
+        event.preventDefault();
         if (this.password !== this.confirmPassword) {
             this.errorMessage = 'Passwords do not match.';
             return;
         }
 
-        if (this.name && this.email && this.password) {
-            // Simulate successful registration
+        if (this.name && this.email && this.password) {
             console.log('Registering user:', this.name, this.email);
             this.router.transitionTo('login');
         } else {

@@ -23,11 +23,7 @@ export default class VehiclesNewController extends Controller {
 
     @action
     async saveVehicle(event) {
-        event.preventDefault();
-
-        // In a real app, create record and save
-        // const vehicle = this.store.createRecord('vehicle', { ... });
-        // await vehicle.save();
+        event.preventDefault();
 
         console.log('Saving vehicle:', {
             make: this.make,

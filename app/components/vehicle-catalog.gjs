@@ -3,9 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { on } from '@ember/modifier';
 import { fn } from '@ember/helper';
-import { inject as service } from '@ember/service';
-
-// Helper para comparación de igualdad
+import { inject as service } from '@ember/service';
 const eq = (a, b) => a === b;
 
 /**
@@ -15,7 +13,7 @@ const eq = (a, b) => a === b;
 export default class VehicleCatalog extends Component {
   @service cars;
   @service session;
-  
+
   @tracked selectedType = 'todos';
   @tracked showModal = false;
   @tracked editingVehicle = null;
@@ -26,9 +24,7 @@ export default class VehicleCatalog extends Component {
     price: 0,
     image: '',
     specs: { potencia: '', velocidadMax: '', aceleracion: '' }
-  };
-
-  // Usar directamente los vehículos del servicio para que CRUD funcione
+  };
   get vehicles() {
     return this.cars.vehicles || [];
   }
@@ -55,9 +51,7 @@ export default class VehicleCatalog extends Component {
   @action
   filterByType(type) {
     this.selectedType = type;
-  }
-
-  // ========== CRUD Actions ==========
+  }
 
   @action
   openAddModal() {
@@ -120,13 +114,13 @@ export default class VehicleCatalog extends Component {
   @action
   saveVehicle(event) {
     event.preventDefault();
-    
+
     if (this.isEditing) {
       this.cars.updateVehicle(this.editingVehicle.id, this.formData);
     } else {
       this.cars.addVehicle(this.formData);
     }
-    
+
     this.closeModal();
   }
 
@@ -144,7 +138,7 @@ export default class VehicleCatalog extends Component {
       <div class="catalog__header">
         <h2>Catálogo de Vehículos</h2>
         {{#if this.session.isAdmin}}
-          <button 
+          <button
             type="button"
             class="btn btn-primary"
             {{on "click" this.openAddModal}}
@@ -158,7 +152,7 @@ export default class VehicleCatalog extends Component {
       <div class="catalog__filters">
         <h3>Filtrar por tipo:</h3>
         <div class="filters-grid">
-          <button 
+          <button
             type="button"
             class="filter-btn {{if (eq this.selectedType 'todos') 'active'}}"
             {{on "click" (fn this.filterByType "todos")}}
@@ -166,7 +160,7 @@ export default class VehicleCatalog extends Component {
             🚘 Todos
           </button>
           {{#each this.types as |type|}}
-            <button 
+            <button
               type="button"
               class="filter-btn {{if (eq this.selectedType type) 'active'}}"
               {{on "click" (fn this.filterByType type)}}
@@ -195,7 +189,7 @@ export default class VehicleCatalog extends Component {
               <span class="vehicle-card__type">{{vehicle.type}}</span>
               <h3 class="vehicle-card__name">{{vehicle.name}}</h3>
               <p class="vehicle-card__description">{{vehicle.description}}</p>
-              
+
               <div class="vehicle-card__specs">
                 <div class="spec">
                   <span class="spec-icon">⚡</span>
@@ -217,14 +211,14 @@ export default class VehicleCatalog extends Component {
                 </div>
                 {{#if this.session.isAdmin}}
                   <div class="vehicle-card__actions">
-                    <button 
+                    <button
                       type="button"
                       class="btn btn-sm btn-outline"
                       {{on "click" (fn this.openEditModal vehicle)}}
                     >
                       ✏️ Editar
                     </button>
-                    <button 
+                    <button
                       type="button"
                       class="btn btn-sm btn-danger"
                       {{on "click" (fn this.deleteVehicle vehicle)}}
@@ -254,13 +248,13 @@ export default class VehicleCatalog extends Component {
               <h3 style="margin: 0; font-size: 1.25rem;">{{if this.isEditing "Editar" "Añadir"}} Vehículo</h3>
               <button type="button" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;" {{on "click" this.closeModal}}>✕</button>
             </div>
-            
+
             <form style="padding: 1.5rem;" {{on "submit" this.saveVehicle}}>
               <div class="form-group">
                 <label for="v-name">Nombre</label>
-                <input 
-                  id="v-name" 
-                  type="text" 
+                <input
+                  id="v-name"
+                  type="text"
                   class="form-control"
                   value={{this.formData.name}}
                   {{on "input" (fn this.updateFormField "name")}}
@@ -270,7 +264,7 @@ export default class VehicleCatalog extends Component {
 
               <div class="form-group">
                 <label for="v-type">Tipo</label>
-                <select 
+                <select
                   id="v-type"
                   class="form-control"
                   {{on "change" (fn this.updateFormField "type")}}
@@ -283,7 +277,7 @@ export default class VehicleCatalog extends Component {
 
               <div class="form-group">
                 <label for="v-description">Descripción</label>
-                <textarea 
+                <textarea
                   id="v-description"
                   class="form-control"
                   rows="3"
@@ -293,9 +287,9 @@ export default class VehicleCatalog extends Component {
 
               <div class="form-group">
                 <label for="v-price">Precio (€)</label>
-                <input 
-                  id="v-price" 
-                  type="number" 
+                <input
+                  id="v-price"
+                  type="number"
                   class="form-control"
                   value={{this.formData.price}}
                   {{on "input" (fn this.updateFormField "price")}}
@@ -305,9 +299,9 @@ export default class VehicleCatalog extends Component {
 
               <div class="form-group">
                 <label for="v-image">URL de Imagen</label>
-                <input 
-                  id="v-image" 
-                  type="url" 
+                <input
+                  id="v-image"
+                  type="url"
                   class="form-control"
                   placeholder="https://ejemplo.com/imagen.jpg"
                   value={{this.formData.image}}
@@ -321,9 +315,9 @@ export default class VehicleCatalog extends Component {
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                 <div class="form-group">
                   <label for="v-potencia">Potencia</label>
-                  <input 
-                    id="v-potencia" 
-                    type="text" 
+                  <input
+                    id="v-potencia"
+                    type="text"
                     class="form-control"
                     placeholder="ej: 350 CV"
                     value={{this.formData.specs.potencia}}
@@ -332,9 +326,9 @@ export default class VehicleCatalog extends Component {
                 </div>
                 <div class="form-group">
                   <label for="v-velocidad">Vel. Máx</label>
-                  <input 
-                    id="v-velocidad" 
-                    type="text" 
+                  <input
+                    id="v-velocidad"
+                    type="text"
                     class="form-control"
                     placeholder="ej: 250 km/h"
                     value={{this.formData.specs.velocidadMax}}

@@ -53,26 +53,25 @@ export default class ContactForm extends Component {
   @action
   handleSubmit(event) {
     event.preventDefault();
-    
+
     this.errors = {};
-    
+
     if (!this.name) {
       this.errors = { ...this.errors, name: 'El nombre es obligatorio' };
     }
-    
+
     if (!this.email) {
       this.errors = { ...this.errors, email: 'El email es obligatorio' };
     } else if (!this.validateEmail(this.email)) {
       this.errors = { ...this.errors, email: 'El email no es válido' };
     }
-    
+
     if (!this.message) {
       this.errors = { ...this.errors, message: 'El mensaje es obligatorio' };
     }
-    
+
     if (Object.keys(this.errors).length === 0) {
-      this.submitted = true;
-      // Reset form
+      this.submitted = true;
       this.name = '';
       this.email = '';
       this.phone = '';
@@ -91,12 +90,12 @@ export default class ContactForm extends Component {
       {{else}}
         <form class="contact-form" {{on "submit" this.handleSubmit}}>
           <h3>Envíanos un Mensaje</h3>
-          
+
           <div class="form-group">
             <label for="name">Nombre *</label>
-            <input 
-              type="text" 
-              id="name" 
+            <input
+              type="text"
+              id="name"
               class="form-control {{if this.errors.name 'is-invalid'}}"
               value={{this.name}}
               {{on "input" this.updateName}}
@@ -109,9 +108,9 @@ export default class ContactForm extends Component {
 
           <div class="form-group">
             <label for="email">Email *</label>
-            <input 
-              type="email" 
-              id="email" 
+            <input
+              type="email"
+              id="email"
               class="form-control {{if this.errors.email 'is-invalid'}}"
               value={{this.email}}
               {{on "input" this.updateEmail}}
@@ -124,9 +123,9 @@ export default class ContactForm extends Component {
 
           <div class="form-group">
             <label for="phone">Teléfono</label>
-            <input 
-              type="tel" 
-              id="phone" 
+            <input
+              type="tel"
+              id="phone"
               class="form-control"
               value={{this.phone}}
               {{on "input" this.updatePhone}}
@@ -136,8 +135,8 @@ export default class ContactForm extends Component {
 
           <div class="form-group">
             <label for="subject">Asunto</label>
-            <select 
-              id="subject" 
+            <select
+              id="subject"
               class="form-control"
               {{on "change" this.updateSubject}}
             >
@@ -151,8 +150,8 @@ export default class ContactForm extends Component {
 
           <div class="form-group">
             <label for="message">Mensaje *</label>
-            <textarea 
-              id="message" 
+            <textarea
+              id="message"
               class="form-control {{if this.errors.message 'is-invalid'}}"
               rows="5"
               {{on "input" this.updateMessage}}

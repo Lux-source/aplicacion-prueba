@@ -18,7 +18,7 @@ import { LinkTo } from '@ember/routing';
           <span>Lujan Motors</span>
         </h1>
         <p class="hero__subtitle">
-          Tu destino definitivo para vehículos de alta gama. 
+          Tu destino definitivo para vehículos de alta gama.
           Descubre la excelencia automotriz con más de 20 años de experiencia.
         </p>
         <div class="hero__cta">
@@ -38,7 +38,7 @@ import { LinkTo } from '@ember/routing';
         <div class="section__header">
           <h2 class="section__title">Nuestros Servicios</h2>
           <p class="section__subtitle">
-            Ofrecemos una experiencia completa en el mundo automotriz, 
+            Ofrecemos una experiencia completa en el mundo automotriz,
             desde la venta hasta el mantenimiento de tu vehículo.
           </p>
         </div>
@@ -48,7 +48,7 @@ import { LinkTo } from '@ember/routing';
             <div class="feature-card__icon">🚗</div>
             <h3 class="feature-card__title">Venta de Vehículos</h3>
             <p class="feature-card__description">
-              Amplio catálogo de vehículos nuevos y seminuevos de las mejores marcas. 
+              Amplio catálogo de vehículos nuevos y seminuevos de las mejores marcas.
               Encuentra el coche perfecto para ti.
             </p>
           </article>
@@ -57,7 +57,7 @@ import { LinkTo } from '@ember/routing';
             <div class="feature-card__icon">🔧</div>
             <h3 class="feature-card__title">Servicio Técnico</h3>
             <p class="feature-card__description">
-              Taller oficial con técnicos certificados. Mantenimiento preventivo, 
+              Taller oficial con técnicos certificados. Mantenimiento preventivo,
               reparaciones y revisiones con garantía.
             </p>
           </article>
@@ -66,7 +66,7 @@ import { LinkTo } from '@ember/routing';
             <div class="feature-card__icon">💰</div>
             <h3 class="feature-card__title">Financiación</h3>
             <p class="feature-card__description">
-              Planes de financiamiento flexibles adaptados a tus necesidades. 
+              Planes de financiamiento flexibles adaptados a tus necesidades.
               Tasas competitivas y aprobación rápida.
             </p>
           </article>
@@ -75,7 +75,7 @@ import { LinkTo } from '@ember/routing';
             <div class="feature-card__icon">🛡️</div>
             <h3 class="feature-card__title">Garantía Extendida</h3>
             <p class="feature-card__description">
-              Protege tu inversión con nuestros planes de garantía extendida. 
+              Protege tu inversión con nuestros planes de garantía extendida.
               Tranquilidad total durante años.
             </p>
           </article>
@@ -212,7 +212,7 @@ import { LinkTo } from '@ember/routing';
         <div class="testimonials-grid">
           <article class="testimonial-card">
             <p class="testimonial-card__text">
-              Excelente experiencia de compra. El equipo de Lujan Motors me ayudó a encontrar 
+              Excelente experiencia de compra. El equipo de Lujan Motors me ayudó a encontrar
               el coche perfecto para mi familia. ¡Totalmente recomendados!
             </p>
             <div class="testimonial-card__author">
@@ -226,7 +226,7 @@ import { LinkTo } from '@ember/routing';
 
           <article class="testimonial-card">
             <p class="testimonial-card__text">
-              El servicio técnico es impecable. Siempre me avisan de cualquier problema 
+              El servicio técnico es impecable. Siempre me avisan de cualquier problema
               antes de que sea grave. Profesionalidad y honestidad.
             </p>
             <div class="testimonial-card__author">
@@ -240,7 +240,7 @@ import { LinkTo } from '@ember/routing';
 
           <article class="testimonial-card">
             <p class="testimonial-card__text">
-              Las condiciones de financiación fueron las mejores que encontré. 
+              Las condiciones de financiación fueron las mejores que encontré.
               El proceso fue rápido y transparente. Volveré seguro.
             </p>
             <div class="testimonial-card__author">

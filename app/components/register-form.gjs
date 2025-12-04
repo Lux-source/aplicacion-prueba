@@ -71,10 +71,10 @@ export default class RegisterForm extends Component {
 
           <div class="form-group">
             <label for="name">Nombre Completo</label>
-            <input 
-              id="name" 
-              type="text" 
-              value={{this.name}} 
+            <input
+              id="name"
+              type="text"
+              value={{this.name}}
               {{on "input" this.updateName}}
               required
               class="form-control"
@@ -84,10 +84,10 @@ export default class RegisterForm extends Component {
 
           <div class="form-group">
             <label for="email">Correo Electrónico</label>
-            <input 
-              id="email" 
-              type="email" 
-              value={{this.email}} 
+            <input
+              id="email"
+              type="email"
+              value={{this.email}}
               {{on "input" this.updateEmail}}
               required
               class="form-control"
@@ -97,10 +97,10 @@ export default class RegisterForm extends Component {
 
           <div class="form-group">
             <label for="password">Contraseña</label>
-            <input 
-              id="password" 
-              type="password" 
-              value={{this.password}} 
+            <input
+              id="password"
+              type="password"
+              value={{this.password}}
               {{on "input" this.updatePassword}}
               required
               class="form-control"
@@ -110,10 +110,10 @@ export default class RegisterForm extends Component {
 
           <div class="form-group">
             <label for="confirmPassword">Confirmar Contraseña</label>
-            <input 
-              id="confirmPassword" 
-              type="password" 
-              value={{this.confirmPassword}} 
+            <input
+              id="confirmPassword"
+              type="password"
+              value={{this.confirmPassword}}
               {{on "input" this.updateConfirmPassword}}
               required
               class="form-control"

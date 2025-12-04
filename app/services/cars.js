@@ -172,10 +172,8 @@ export default class CarsService extends Service {
 
   getExtras() {
     return this.extras;
-  }
+  }
 
-  // ========== CRUD Methods ==========
-  
   /**
    * CREATE - Añadir nuevo vehículo
    */

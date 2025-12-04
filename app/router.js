@@ -6,26 +6,16 @@ export default class Router extends EmberRouter {
   rootURL = config.rootURL;
 }
 
-Router.map(function () {
-  // Rutas principales de Lujan Motors
+Router.map(function () {
   this.route('about');      // Conócenos
   this.route('contact');    // Contáctanos
   this.route('catalog');    // Catálogo de vehículos
-  this.route('configurator'); // Configurador de vehículos
-
-  // Nuevas funcionalidades
-  // Implementacion P4
+  this.route('configurator'); // Configurador de vehículos
   this.route('vehicles', function () {
     this.route('new');
-  });
-
-  // Ruta dinámica para perfiles de miembros del equipo
-  this.route('profile', { path: '/profile/:member_id' });
-
-  // Autenticación
+  });
+  this.route('profile', { path: '/profile/:member_id' });
   this.route('login');
-  this.route('register');
-
-  // Ruta 404 - Captura todas las URLs no encontradas (debe ir al final)
+  this.route('register');
   this.route('not-found', { path: '/*path' });
 });

@@ -18,11 +18,11 @@ export default class ArticleList extends Component {
   get filteredArticles() {
     const articles = this.args.articles || [];
     const term = this.searchTerm.toLowerCase().trim();
-    
+
     if (!term) {
       return articles;
     }
-    
+
     return articles.filter(article => {
       const title = (article.title || '').toLowerCase();
       const body = (article.body || '').toLowerCase();
@@ -79,7 +79,7 @@ export default class ArticleList extends Component {
             Lista de Artículos
           {{/if}}
         </h2>
-        
+
         <div class="article-list__stats">
           Mostrando {{this.filteredCount}} de {{this.totalCount}} artículos
         </div>
@@ -99,8 +99,8 @@ export default class ArticleList extends Component {
         <div class="article-list__selected">
           <h3>Artículo Seleccionado</h3>
           <ArticleCard @article={{this.selectedArticle}} @showExcerpt={{false}} />
-          <button 
-            type="button" 
+          <button
+            type="button"
             class="article-list__clear-btn"
             {{on "click" this.clearSelection}}
           >
@@ -113,8 +113,8 @@ export default class ArticleList extends Component {
         <ul class="article-list__items">
           {{#each this.filteredArticles as |article|}}
             <li class="article-list__item">
-              <ArticleCard 
-                @article={{article}} 
+              <ArticleCard
+                @article={{article}}
                 @showExcerpt={{true}}
                 @onSelect={{this.selectArticle}}
               />

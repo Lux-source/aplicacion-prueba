@@ -2,9 +2,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { on } from '@ember/modifier';
-import { fn } from '@ember/helper';
-
-// Helper para comparación de igualdad
+import { fn } from '@ember/helper';
 const eq = (a, b) => a === b;
 
 /**
@@ -30,21 +28,21 @@ export default class VehicleConfigurator extends Component {
 
   get totalPrice() {
     if (!this.selectedVehicle) return 0;
-    
+
     let total = this.selectedVehicle.price;
-    
+
     const colorOption = this.colorOptions.find(c => c.name === this.selectedColor);
     if (colorOption) {
       total += colorOption.price;
     }
-    
+
     this.selectedExtras.forEach(extraId => {
       const extra = this.extras.find(e => e.id === extraId);
       if (extra) {
         total += extra.price;
       }
     });
-    
+
     return total;
   }
 
@@ -92,7 +90,7 @@ export default class VehicleConfigurator extends Component {
         <h4>1. Elige tu modelo</h4>
         <div class="filters-grid" style="margin-top: 1rem;">
           {{#each this.vehicles as |vehicle|}}
-            <button 
+            <button
               type="button"
               class="filter-btn {{if (eq this.selectedVehicleId vehicle.id) 'active'}}"
               {{on "click" (fn this.selectVehicle vehicle)}}
@@ -115,7 +113,7 @@ export default class VehicleConfigurator extends Component {
             <h4>2. Elige el color</h4>
             <div class="color-options" style="margin-top: 1rem;">
               {{#each this.colorOptions as |color|}}
-                <button 
+                <button
                   type="button"
                   class="color-option {{color.class}} {{if (eq this.selectedColor color.name) 'selected'}}"
                   title={{color.name}}
@@ -135,7 +133,7 @@ export default class VehicleConfigurator extends Component {
             <div style="margin-top: 1rem;">
               {{#each this.extras as |extra|}}
                 <label style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; cursor: pointer;">
-                  <input 
+                  <input
                     type="checkbox"
                     checked={{this.isExtraSelected extra.id}}
                     {{on "change" (fn this.toggleExtra extra.id)}}

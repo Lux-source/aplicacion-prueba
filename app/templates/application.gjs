@@ -25,7 +25,7 @@ export default class Application extends Component {
           <div class="app-header__logo">LM</div>
           <h1 class="app-header__title">Lujan <span>Motors</span></h1>
         </div>
-        
+
         <nav class="app-header__nav">
           <ul class="app-nav">
             <li class="app-nav__item">
@@ -58,7 +58,7 @@ export default class Application extends Component {
                 🚙 Gestión Vehículos
               </LinkTo>
             </li>
-            
+
             {{#if this.session.isAuthenticated}}
               <li class="app-nav__item">
                 <button type="button" class="app-nav__link btn-link" {{on "click" this.logout}}>
@@ -94,8 +94,8 @@ export default class Application extends Component {
           <div class="footer-section">
             <h4>Lujan Motors</h4>
             <p>
-              Tu concesionario de confianza desde 2004. 
-              Más de 20 años ofreciendo vehículos de calidad 
+              Tu concesionario de confianza desde 2004.
+              Más de 20 años ofreciendo vehículos de calidad
               y un servicio excepcional.
             </p>
           </div>

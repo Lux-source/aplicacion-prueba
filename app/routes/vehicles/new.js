@@ -1,7 +1,5 @@
 import Route from '@ember/routing/route';
-import { inject as service } from '@ember/service';
-
-// Implementacion P4
+import { inject as service } from '@ember/service';
 export default class VehiclesNewRoute extends Route {
     @service session;
     @service router;

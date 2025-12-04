@@ -58,10 +58,10 @@ export default class LoginForm extends Component {
 
           <div class="form-group">
             <label for="email">Correo Electrónico</label>
-            <input 
-              id="email" 
-              type="email" 
-              value={{this.email}} 
+            <input
+              id="email"
+              type="email"
+              value={{this.email}}
               {{on "input" this.updateEmail}}
               required
               class="form-control"
@@ -71,10 +71,10 @@ export default class LoginForm extends Component {
 
           <div class="form-group">
             <label for="password">Contraseña</label>
-            <input 
-              id="password" 
-              type="password" 
-              value={{this.password}} 
+            <input
+              id="password"
+              type="password"
+              value={{this.password}}
               {{on "input" this.updatePassword}}
               required
               class="form-control"

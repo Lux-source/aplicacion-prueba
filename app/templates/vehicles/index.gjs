@@ -8,7 +8,7 @@ import { LinkTo } from '@ember/routing';
     <div class="section__header">
       <h1 class="section__title">Nuestros Vehículos</h1>
       <p class="section__subtitle">Explora nuestra colección exclusiva</p>
-      
+
       <div style="margin-top: 2rem;">
         <LinkTo @route="vehicles.new" class="btn btn-primary">
           + Añadir Vehículo

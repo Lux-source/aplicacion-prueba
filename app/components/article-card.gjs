@@ -14,7 +14,7 @@ import { fn } from '@ember/helper';
         <span class="article-card__author">Usuario #{{@article.userId}}</span>
       {{/if}}
     </header>
-    
+
     <div class="article-card__content">
       <p class="article-card__body">
         {{#if @showExcerpt}}
@@ -24,12 +24,12 @@ import { fn } from '@ember/helper';
         {{/if}}
       </p>
     </div>
-    
+
     <footer class="article-card__footer">
       <span class="article-card__id">ID: {{@article.id}}</span>
       {{#if @onSelect}}
-        <button 
-          type="button" 
+        <button
+          type="button"
           class="article-card__button"
           {{on "click" (fn @onSelect @article)}}
         >

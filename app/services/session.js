@@ -1,8 +1,6 @@
 import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import { inject as service } from '@ember/service';
-
-// Credenciales de administrador
+import { inject as service } from '@ember/service';
 const ADMIN_EMAIL = 'administrador@correo.com';
 const ADMIN_PASSWORD = 'Administrador';
 
@@ -14,8 +12,7 @@ export default class SessionService extends Service {
     @tracked currentUser = null;
     @tracked isAdmin = false;
 
-    async login(email, password) {
-        // Check admin credentials first
+    async login(email, password) {
         if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
             this.isAuthenticated = true;
             this.isAdmin = true;
@@ -24,12 +21,7 @@ export default class SessionService extends Service {
             localStorage.setItem('isAdmin', 'true');
             localStorage.setItem('adminEmail', ADMIN_EMAIL);
             return true;
-        }
-
-        // Mock authentication logic for regular users
-        // In a real app, this would make an API call
-
-        // Find user with matching email
+        }
         const users = await this.store.findAll('user');
         const user = users.find(u => u.email === email);
 
@@ -45,25 +37,20 @@ export default class SessionService extends Service {
         }
     }
 
-    async register(name, email, password) {
-        // Check if user already exists
+    async register(name, email, password) {
         const users = await this.store.findAll('user');
         const existingUser = users.find(u => u.email === email);
 
         if (existingUser) {
             throw new Error('El usuario ya existe');
-        }
-
-        // Create new user
+        }
         const newUser = this.store.createRecord('user', {
             name, // Changed from username to name to match upstream model
             email,
             password
         });
 
-        await newUser.save();
-
-        // Auto login after register
+        await newUser.save();
         this.isAuthenticated = true;
         this.currentUser = newUser;
         localStorage.setItem('isAuthenticated', 'true');
@@ -89,17 +76,13 @@ export default class SessionService extends Service {
         const isAuth = localStorage.getItem('isAuthenticated');
         const isAdminStored = localStorage.getItem('isAdmin');
         const adminEmail = localStorage.getItem('adminEmail');
-        const userId = localStorage.getItem('currentUserId');
-
-        // Restore admin session
+        const userId = localStorage.getItem('currentUserId');
         if (isAuth && isAdminStored && adminEmail === ADMIN_EMAIL) {
             this.isAuthenticated = true;
             this.isAdmin = true;
             this.currentUser = { email: ADMIN_EMAIL, name: 'Administrador' };
             return;
-        }
-
-        // Restore regular user session
+        }
         if (isAuth && userId) {
             try {
                 const user = await this.store.findRecord('user', userId);

@@ -10,17 +10,12 @@ export default class ProfileRoute extends Route {
   @service store;  // Inyectamos el store de Ember Data
 
   async model(params) {
-    const memberId = parseInt(params.member_id, 10);
-    
-    // Obtener datos del miembro del equipo (datos locales)
+    const memberId = parseInt(params.member_id, 10);
     const member = this.team.getById(memberId);
-    
+
     if (!member) {
       throw new Error('Miembro no encontrado');
-    }
-
-    // Cargar datos de JSONPlaceholder usando Ember Data Store
-    // El adapter y serializer se encargan de la comunicación con la API
+    }
     const [posts, albums, todos] = await Promise.all([
       this.store.query('post', { userId: memberId }),
       this.store.query('album', { userId: memberId }),

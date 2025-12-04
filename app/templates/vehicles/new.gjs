@@ -19,10 +19,10 @@ const eq = (a, b) => a === b;
         <div class="form-row">
           <div class="form-group">
             <label for="make">Marca</label>
-            <input 
-              type="text" 
-              id="make" 
-              class="form-control" 
+            <input
+              type="text"
+              id="make"
+              class="form-control"
               placeholder="Ej. BMW"
               value={{@controller.make}}
               {{on "input" (fn @controller.updateValue "make")}}
@@ -30,10 +30,10 @@ const eq = (a, b) => a === b;
           </div>
           <div class="form-group">
             <label for="model">Modelo</label>
-            <input 
-              type="text" 
-              id="model" 
-              class="form-control" 
+            <input
+              type="text"
+              id="model"
+              class="form-control"
               placeholder="Ej. X5"
               value={{@controller.model}}
               {{on "input" (fn @controller.updateValue "model")}}
@@ -44,20 +44,20 @@ const eq = (a, b) => a === b;
         <div class="form-row">
           <div class="form-group">
             <label for="year">Año</label>
-            <input 
-              type="number" 
-              id="year" 
-              class="form-control" 
+            <input
+              type="number"
+              id="year"
+              class="form-control"
               value={{@controller.year}}
               {{on "input" (fn @controller.updateValue "year")}}
             />
           </div>
           <div class="form-group">
             <label for="price">Precio (€)</label>
-            <input 
-              type="number" 
-              id="price" 
-              class="form-control" 
+            <input
+              type="number"
+              id="price"
+              class="form-control"
               value={{@controller.price}}
               {{on "input" (fn @controller.updateValue "price")}}
             />
@@ -66,8 +66,8 @@ const eq = (a, b) => a === b;
 
         <div class="form-group">
           <label for="type">Tipo</label>
-          <select 
-            id="type" 
+          <select
+            id="type"
             class="form-control"
             {{on "change" (fn @controller.updateValue "type")}}
           >
@@ -81,9 +81,9 @@ const eq = (a, b) => a === b;
 
         <div class="form-group">
           <label for="description">Descripción</label>
-          <textarea 
-            id="description" 
-            class="form-control" 
+          <textarea
+            id="description"
+            class="form-control"
             rows="4"
             {{on "input" (fn @controller.updateValue "description")}}
           >{{@controller.description}}</textarea>

@@ -1,7 +1,5 @@
 import Component from '@glimmer/component';
-import { inject as service } from '@ember/service';
-
-// Implementacion P4
+import { inject as service } from '@ember/service';
 export default class NotificationContainer extends Component {
   @service notifications;
 

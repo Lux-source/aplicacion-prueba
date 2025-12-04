@@ -4,11 +4,7 @@ import { inject as service } from '@ember/service';
 export default class VehiclesIndexRoute extends Route {
     @service store;
 
-    async model() {
-        // In a real app, this would fetch from the API
-        // return this.store.findAll('vehicle');
-
-        // For now, return mock data if store is empty or just mock objects
+    async model() {
         return [
             {
                 id: '1',

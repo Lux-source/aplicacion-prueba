@@ -19,7 +19,7 @@ import { LinkTo } from '@ember/routing';
       {{! Mensaje de error }}
       <h1 class="error-page__title">¡Ups! Página no encontrada</h1>
       <p class="error-page__message">
-        Parece que este vehículo se ha perdido en el camino. 
+        Parece que este vehículo se ha perdido en el camino.
         La página que buscas no existe o ha sido movida.
       </p>
 
@@ -42,8 +42,8 @@ import { LinkTo } from '@ember/routing';
       {{! Información adicional }}
       <div class="error-page__help">
         <p>
-          Si crees que esto es un error, 
-          <LinkTo @route="contact">contáctanos</LinkTo> 
+          Si crees que esto es un error,
+          <LinkTo @route="contact">contáctanos</LinkTo>
           y te ayudaremos.
         </p>
       </div>

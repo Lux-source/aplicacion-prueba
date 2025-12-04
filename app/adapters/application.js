@@ -10,8 +10,7 @@ export default class ApplicationAdapter extends RESTAdapter {
   /**
    * Mapea los tipos de modelo a los endpoints de la API
    */
-  pathForType(type) {
-    // JSONPlaceholder usa nombres en plural
+  pathForType(type) {
     const typeMap = {
       article: 'posts',
       post: 'posts',
@@ -26,8 +25,7 @@ export default class ApplicationAdapter extends RESTAdapter {
   /**
    * Construye la URL para queries con filtros (ej: posts de un usuario)
    */
-  urlForQuery(query, modelName) {
-    // Si hay userId, usamos el endpoint anidado /users/:id/posts
+  urlForQuery(query, modelName) {
     if (query.userId) {
       const userId = query.userId;
       delete query.userId;

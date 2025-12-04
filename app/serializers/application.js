@@ -11,13 +11,11 @@ export default class ApplicationSerializer extends RESTSerializer {
    */
   normalizeArrayResponse(store, primaryModelClass, payload, id, requestType) {
     const modelName = primaryModelClass.modelName;
-    const pluralModelName = this.pluralize(modelName);
-    
-    // Envolver el array en un objeto con la clave del modelo
+    const pluralModelName = this.pluralize(modelName);
     const normalizedPayload = {
       [pluralModelName]: payload
     };
-    
+
     return super.normalizeArrayResponse(store, primaryModelClass, normalizedPayload, id, requestType);
   }
 
@@ -26,11 +24,11 @@ export default class ApplicationSerializer extends RESTSerializer {
    */
   normalizeSingleResponse(store, primaryModelClass, payload, id, requestType) {
     const modelName = primaryModelClass.modelName;
-    
+
     const normalizedPayload = {
       [modelName]: payload
     };
-    
+
     return super.normalizeSingleResponse(store, primaryModelClass, normalizedPayload, id, requestType);
   }
 

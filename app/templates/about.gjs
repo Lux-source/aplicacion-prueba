@@ -24,17 +24,17 @@ import TeamMemberCard from '../components/team-member-card';
           <div class="history-content animate-slide-in-left">
             <h3>Nuestra Historia</h3>
             <p>
-              Lujan Motors nació en 2004 con una visión clara: ofrecer una experiencia 
-              automotriz excepcional que combinara la pasión por los vehículos con un 
+              Lujan Motors nació en 2004 con una visión clara: ofrecer una experiencia
+              automotriz excepcional que combinara la pasión por los vehículos con un
               servicio al cliente impecable.
             </p>
             <p>
-              Lo que comenzó como un pequeño taller familiar se ha convertido en uno de 
-              los concesionarios más respetados de la región, manteniendo siempre los 
+              Lo que comenzó como un pequeño taller familiar se ha convertido en uno de
+              los concesionarios más respetados de la región, manteniendo siempre los
               valores que nos definen: honestidad, calidad y compromiso.
             </p>
             <p>
-              Hoy, con más de 5.000 clientes satisfechos, seguimos creciendo pero sin 
+              Hoy, con más de 5.000 clientes satisfechos, seguimos creciendo pero sin
               perder nuestra esencia: tratar a cada cliente como parte de nuestra familia.
             </p>
 
@@ -129,7 +129,7 @@ import TeamMemberCard from '../components/team-member-card';
             <div class="feature-card__icon">✅</div>
             <h3 class="feature-card__title">Garantía Total</h3>
             <p class="feature-card__description">
-              Todos nuestros vehículos incluyen garantía extendida y servicio post-venta 
+              Todos nuestros vehículos incluyen garantía extendida y servicio post-venta
               para tu tranquilidad.
             </p>
           </article>
@@ -138,7 +138,7 @@ import TeamMemberCard from '../components/team-member-card';
             <div class="feature-card__icon">🏆</div>
             <h3 class="feature-card__title">Calidad Certificada</h3>
             <p class="feature-card__description">
-              Certificaciones ISO y reconocimientos del sector avalan nuestra 
+              Certificaciones ISO y reconocimientos del sector avalan nuestra
               calidad y profesionalismo.
             </p>
           </article>
@@ -147,7 +147,7 @@ import TeamMemberCard from '../components/team-member-card';
             <div class="feature-card__icon">💬</div>
             <h3 class="feature-card__title">Atención Personalizada</h3>
             <p class="feature-card__description">
-              Cada cliente es único. Nos tomamos el tiempo de entender tus necesidades 
+              Cada cliente es único. Nos tomamos el tiempo de entender tus necesidades
               y encontrar la solución perfecta.
             </p>
           </article>
