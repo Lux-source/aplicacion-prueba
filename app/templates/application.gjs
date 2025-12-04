@@ -1,14 +1,18 @@
 import { pageTitle } from 'ember-page-title';
 import { LinkTo } from '@ember/routing';
 
+import NotificationContainer from 'aplicacion-prueba/components/ui/notification';
+
 /**
  * Template principal de la aplicación - Lujan Motors
  * Layout con navegación y estructura principal
  */
+// Implementacion P4
 <template>
   {{pageTitle "Lujan Motors - Concesionario Premium"}}
 
   <div class="app-container">
+    <NotificationContainer />
     <header class="app-header">
       <div class="app-header__brand">
         <div class="app-header__logo">LM</div>

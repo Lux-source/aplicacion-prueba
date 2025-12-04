@@ -14,6 +14,7 @@ Router.map(function () {
   this.route('configurator'); // Configurador de vehículos
 
   // Nuevas funcionalidades
+  // Implementacion P4
   this.route('login');
   this.route('register');
   this.route('vehicles', function () {

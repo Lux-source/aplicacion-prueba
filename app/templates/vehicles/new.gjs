@@ -3,6 +3,8 @@ import { on } from '@ember/modifier';
 import { fn } from '@ember/helper';
 import { LinkTo } from '@ember/routing';
 
+const eq = (a, b) => a === b;
+
 <template>
   {{pageTitle "Nuevo Vehículo - Lujan Motors"}}
 
@@ -69,11 +71,11 @@ import { LinkTo } from '@ember/routing';
             class="form-control"
             {{on "change" (fn @controller.updateValue "type")}}
           >
-            <option value="Sedán" selected={{if (fn (fn (mut @controller.type) "Sedán") "==" "Sedán") true}}>Sedán</option>
-            <option value="SUV">SUV</option>
-            <option value="Deportivo">Deportivo</option>
-            <option value="Compacto">Compacto</option>
-            <option value="Familiar">Familiar</option>
+            <option value="Sedán" selected={{if (eq @controller.type "Sedán") "selected"}}>Sedán</option>
+            <option value="SUV" selected={{if (eq @controller.type "SUV") "selected"}}>SUV</option>
+            <option value="Deportivo" selected={{if (eq @controller.type "Deportivo") "selected"}}>Deportivo</option>
+            <option value="Compacto" selected={{if (eq @controller.type "Compacto") "selected"}}>Compacto</option>
+            <option value="Familiar" selected={{if (eq @controller.type "Familiar") "selected"}}>Familiar</option>
           </select>
         </div>
 

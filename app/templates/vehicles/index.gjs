@@ -10,9 +10,9 @@ import { LinkTo } from '@ember/routing';
       <p class="section__subtitle">Explora nuestra colección exclusiva</p>
       
       <div style="margin-top: 2rem;">
-        <LinkTo @route="vehicles.new" class="btn btn-primary">
+        <a href="/vehicles/new" class="btn btn-primary">
           + Añadir Vehículo
-        </LinkTo>
+        </a>
       </div>
     </div>
 
