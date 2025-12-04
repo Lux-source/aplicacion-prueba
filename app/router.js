@@ -7,5 +7,9 @@ export default class Router extends EmberRouter {
 }
 
 Router.map(function () {
-  this.route('articles');
+  // Rutas principales de Lujan Motors
+  this.route('about');      // Conócenos
+  this.route('contact');    // Contáctanos
+  this.route('catalog');    // Catálogo de vehículos
+  this.route('configurator'); // Configurador de vehículos
 });

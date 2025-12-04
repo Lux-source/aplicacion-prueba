@@ -2,32 +2,52 @@ import { pageTitle } from 'ember-page-title';
 import { LinkTo } from '@ember/routing';
 
 /**
- * Template principal de la aplicación
- * Paquete P2: Layout con navegación y estructura principal
+ * Template principal de la aplicación - Lujan Motors
+ * Layout con navegación y estructura principal
  */
 <template>
-  {{pageTitle "Aplicación Ember - Paquete P2"}}
+  {{pageTitle "Lujan Motors - Concesionario Premium"}}
 
   <div class="app-container">
     <header class="app-header">
       <div class="app-header__brand">
-        <h1 class="app-header__title">🚀 Ember P2 App</h1>
+        <div class="app-header__logo">LM</div>
+        <h1 class="app-header__title">Lujan <span>Motors</span></h1>
       </div>
       
       <nav class="app-header__nav">
         <ul class="app-nav">
           <li class="app-nav__item">
             <LinkTo @route="index" class="app-nav__link">
-              Inicio
+              🏠 Inicio
             </LinkTo>
           </li>
           <li class="app-nav__item">
-            <LinkTo @route="articles" class="app-nav__link">
-              Artículos
+            <LinkTo @route="catalog" class="app-nav__link">
+              🚗 Catálogo
+            </LinkTo>
+          </li>
+          <li class="app-nav__item">
+            <LinkTo @route="configurator" class="app-nav__link">
+              ⚙️ Configurador
+            </LinkTo>
+          </li>
+          <li class="app-nav__item">
+            <LinkTo @route="about" class="app-nav__link">
+              👥 Conócenos
+            </LinkTo>
+          </li>
+          <li class="app-nav__item">
+            <LinkTo @route="contact" class="app-nav__link">
+              📞 Contacto
             </LinkTo>
           </li>
         </ul>
       </nav>
+
+      <button class="mobile-menu-btn" type="button" aria-label="Menú">
+        ☰
+      </button>
     </header>
 
     <main class="app-main">
@@ -35,15 +55,51 @@ import { LinkTo } from '@ember/routing';
     </main>
 
     <footer class="app-footer">
-      <p class="app-footer__text">
-        Paquete P2 - Tecnologías Web con Ember.js
-      </p>
-      <p class="app-footer__credits">
-        Datos proporcionados por 
-        <a href="https://jsonplaceholder.typicode.com" target="_blank" rel="noopener noreferrer">
-          JSONPlaceholder
-        </a>
-      </p>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Lujan Motors</h4>
+          <p>
+            Tu concesionario de confianza desde 2004. 
+            Más de 20 años ofreciendo vehículos de calidad 
+            y un servicio excepcional.
+          </p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Enlaces Rápidos</h4>
+          <ul>
+            <li><LinkTo @route="index">Inicio</LinkTo></li>
+            <li><LinkTo @route="catalog">Catálogo</LinkTo></li>
+            <li><LinkTo @route="configurator">Configurador</LinkTo></li>
+            <li><LinkTo @route="about">Conócenos</LinkTo></li>
+            <li><LinkTo @route="contact">Contacto</LinkTo></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Servicios</h4>
+          <ul>
+            <li><a href="#">Venta de Vehículos</a></li>
+            <li><a href="#">Servicio Técnico</a></li>
+            <li><a href="#">Financiación</a></li>
+            <li><a href="#">Garantía Extendida</a></li>
+            <li><a href="#">Tasación de Vehículos</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Contacto</h4>
+          <p>📍 Av. Principal 1234</p>
+          <p>📞 +34 912 345 678</p>
+          <p>✉️ info@lujanmotors.com</p>
+          <p>🕐 Lun-Vie: 9:00-20:00</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2024 Lujan Motors. Todos los derechos reservados.</p>
+        <p>Desarrollado con ❤️ usando Ember.js</p>
+      </div>
     </footer>
   </div>
 </template>
