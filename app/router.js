@@ -20,4 +20,7 @@ Router.map(function () {
   this.route('vehicles', function () {
     this.route('new');
   });
+
+  // Ruta dinámica para perfiles de miembros del equipo
+  this.route('profile', { path: '/profile/:member_id' });
 });
