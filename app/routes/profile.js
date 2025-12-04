@@ -3,10 +3,11 @@ import { service } from '@ember/service';
 
 /**
  * Ruta del perfil de miembro del equipo
- * Combina datos locales del equipo con datos de JSONPlaceholder
+ * Combina datos locales del equipo con datos de JSONPlaceholder usando Ember Data
  */
 export default class ProfileRoute extends Route {
   @service team;
+  @service store;  // Inyectamos el store de Ember Data
 
   async model(params) {
     const memberId = parseInt(params.member_id, 10);
@@ -18,31 +19,19 @@ export default class ProfileRoute extends Route {
       throw new Error('Miembro no encontrado');
     }
 
-    // Cargar datos de JSONPlaceholder usando el ID del miembro
+    // Cargar datos de JSONPlaceholder usando Ember Data Store
+    // El adapter y serializer se encargan de la comunicación con la API
     const [posts, albums, todos] = await Promise.all([
-      this.fetchFromAPI(`users/${memberId}/posts`),
-      this.fetchFromAPI(`users/${memberId}/albums`),
-      this.fetchFromAPI(`users/${memberId}/todos?_limit=5`)
+      this.store.query('post', { userId: memberId }),
+      this.store.query('album', { userId: memberId }),
+      this.store.query('todo', { userId: memberId })
     ]);
 
     return {
       member,
-      posts: posts.slice(0, 3),
-      albums: albums.slice(0, 4),
-      todos
+      posts: posts.slice(0, 3),      // Solo mostrar 3 posts
+      albums: albums.slice(0, 4),    // Solo mostrar 4 álbumes
+      todos: todos.slice(0, 5)       // Solo mostrar 5 tareas
     };
-  }
-
-  async fetchFromAPI(endpoint) {
-    try {
-      const response = await fetch(`https://jsonplaceholder.typicode.com/${endpoint}`);
-      if (!response.ok) {
-        throw new Error('Error en la API');
-      }
-      return await response.json();
-    } catch (error) {
-      console.error('Error fetching from JSONPlaceholder:', error);
-      return [];
-    }
   }
 }

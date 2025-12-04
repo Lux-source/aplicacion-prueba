@@ -22,13 +22,14 @@ export default class SessionService extends Service {
             this.currentUser = user;
             localStorage.setItem('isAuthenticated', 'true');
             localStorage.setItem('currentUserId', user.id);
+            localStorage.setItem('authToken', 'mock-token-123'); // For compatibility with upstream if needed
             return true;
         } else {
             return false;
         }
     }
 
-    async register(username, email, password) {
+    async register(name, email, password) {
         // Check if user already exists
         const users = await this.store.findAll('user');
         const existingUser = users.find(u => u.email === email);
@@ -39,7 +40,7 @@ export default class SessionService extends Service {
 
         // Create new user
         const newUser = this.store.createRecord('user', {
-            username,
+            name, // Changed from username to name to match upstream model
             email,
             password
         });
@@ -51,6 +52,7 @@ export default class SessionService extends Service {
         this.currentUser = newUser;
         localStorage.setItem('isAuthenticated', 'true');
         localStorage.setItem('currentUserId', newUser.id);
+        localStorage.setItem('authToken', 'mock-token-123');
 
         return true;
     }
@@ -60,6 +62,7 @@ export default class SessionService extends Service {
         this.currentUser = null;
         localStorage.removeItem('isAuthenticated');
         localStorage.removeItem('currentUserId');
+        localStorage.removeItem('authToken');
         this.router.transitionTo('index');
     }
 

@@ -9,7 +9,7 @@ export default class RegisterForm extends Component {
   @service session;
   @service router;
 
-  @tracked username = '';
+  @tracked name = '';
   @tracked email = '';
   @tracked password = '';
   @tracked confirmPassword = '';
@@ -17,8 +17,8 @@ export default class RegisterForm extends Component {
   @tracked isLoading = false;
 
   @action
-  updateUsername(event) {
-    this.username = event.target.value;
+  updateName(event) {
+    this.name = event.target.value;
   }
 
   @action
@@ -49,7 +49,7 @@ export default class RegisterForm extends Component {
     this.isLoading = true;
 
     try {
-      await this.session.register(this.username, this.email, this.password);
+      await this.session.register(this.name, this.email, this.password);
       this.router.transitionTo('index');
     } catch (e) {
       this.error = e.message || 'Ocurrió un error al registrarse';
@@ -59,74 +59,81 @@ export default class RegisterForm extends Component {
   }
 
   <template>
-    <div class="auth-form-container">
-      <form class="auth-form" {{on "submit" this.register}}>
-        <h2>Registro</h2>
-        
-        {{#if this.error}}
-          <div class="alert alert-danger">{{this.error}}</div>
-        {{/if}}
+    <div class="container page-enter">
+      <div class="auth-page">
+        <h1 class="auth-title">Crear Cuenta</h1>
+        <p class="auth-subtitle">Únete a la comunidad de Lujan Motors</p>
 
-        <div class="form-group">
-          <label for="username">Nombre de usuario</label>
-          <input 
-            id="username" 
-            type="text" 
-            value={{this.username}} 
-            {{on "input" this.updateUsername}}
-            required
-            class="form-control"
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input 
-            id="email" 
-            type="email" 
-            value={{this.email}} 
-            {{on "input" this.updateEmail}}
-            required
-            class="form-control"
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="password">Contraseña</label>
-          <input 
-            id="password" 
-            type="password" 
-            value={{this.password}} 
-            {{on "input" this.updatePassword}}
-            required
-            class="form-control"
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="confirmPassword">Confirmar Contraseña</label>
-          <input 
-            id="confirmPassword" 
-            type="password" 
-            value={{this.confirmPassword}} 
-            {{on "input" this.updateConfirmPassword}}
-            required
-            class="form-control"
-          />
-        </div>
-
-        <button type="submit" class="btn btn-primary" disabled={{this.isLoading}}>
-          {{#if this.isLoading}}
-            Cargando...
-          {{else}}
-            Registrarse
+        <form class="auth-form" {{on "submit" this.register}}>
+          {{#if this.error}}
+            <div class="alert alert-danger">{{this.error}}</div>
           {{/if}}
-        </button>
 
-        <div class="auth-links">
-          <p>¿Ya tienes cuenta? <LinkTo @route="login">Inicia sesión aquí</LinkTo></p>
-        </div>
-      </form>
+          <div class="form-group">
+            <label for="name">Nombre Completo</label>
+            <input 
+              id="name" 
+              type="text" 
+              value={{this.name}} 
+              {{on "input" this.updateName}}
+              required
+              class="form-control"
+              placeholder="Juan Pérez"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Correo Electrónico</label>
+            <input 
+              id="email" 
+              type="email" 
+              value={{this.email}} 
+              {{on "input" this.updateEmail}}
+              required
+              class="form-control"
+              placeholder="tu@email.com"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input 
+              id="password" 
+              type="password" 
+              value={{this.password}} 
+              {{on "input" this.updatePassword}}
+              required
+              class="form-control"
+              placeholder="••••••••"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">Confirmar Contraseña</label>
+            <input 
+              id="confirmPassword" 
+              type="password" 
+              value={{this.confirmPassword}} 
+              {{on "input" this.updateConfirmPassword}}
+              required
+              class="form-control"
+              placeholder="••••••••"
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-lg" disabled={{this.isLoading}}>
+            {{#if this.isLoading}}
+              Cargando...
+            {{else}}
+              Registrarse
+            {{/if}}
+          </button>
+
+          <div class="auth-footer">
+            ¿Ya tienes cuenta? <LinkTo @route="login">Inicia sesión</LinkTo>
+          </div>
+        </form>
+      </div>
     </div>
   </template>
 }

@@ -46,50 +46,55 @@ export default class LoginForm extends Component {
   }
 
   <template>
-    <div class="auth-form-container">
-      <form class="auth-form" {{on "submit" this.login}}>
-        <h2>Iniciar Sesión</h2>
-        
-        {{#if this.error}}
-          <div class="alert alert-danger">{{this.error}}</div>
-        {{/if}}
+    <div class="container page-enter">
+      <div class="auth-page">
+        <h1 class="auth-title">Iniciar Sesión</h1>
+        <p class="auth-subtitle">Bienvenido de nuevo a Lujan Motors</p>
 
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input 
-            id="email" 
-            type="email" 
-            value={{this.email}} 
-            {{on "input" this.updateEmail}}
-            required
-            class="form-control"
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="password">Contraseña</label>
-          <input 
-            id="password" 
-            type="password" 
-            value={{this.password}} 
-            {{on "input" this.updatePassword}}
-            required
-            class="form-control"
-          />
-        </div>
-
-        <button type="submit" class="btn btn-primary" disabled={{this.isLoading}}>
-          {{#if this.isLoading}}
-            Cargando...
-          {{else}}
-            Entrar
+        <form class="auth-form" {{on "submit" this.login}}>
+          {{#if this.error}}
+            <div class="alert alert-danger">{{this.error}}</div>
           {{/if}}
-        </button>
 
-        <div class="auth-links">
-          <p>¿No tienes cuenta? <LinkTo @route="register">Regístrate aquí</LinkTo></p>
-        </div>
-      </form>
+          <div class="form-group">
+            <label for="email">Correo Electrónico</label>
+            <input 
+              id="email" 
+              type="email" 
+              value={{this.email}} 
+              {{on "input" this.updateEmail}}
+              required
+              class="form-control"
+              placeholder="tu@email.com"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input 
+              id="password" 
+              type="password" 
+              value={{this.password}} 
+              {{on "input" this.updatePassword}}
+              required
+              class="form-control"
+              placeholder="••••••••"
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-lg" disabled={{this.isLoading}}>
+            {{#if this.isLoading}}
+              Cargando...
+            {{else}}
+              Entrar
+            {{/if}}
+          </button>
+
+          <div class="auth-footer">
+            ¿No tienes cuenta? <LinkTo @route="register">Regístrate aquí</LinkTo>
+          </div>
+        </form>
+      </div>
     </div>
   </template>
 }

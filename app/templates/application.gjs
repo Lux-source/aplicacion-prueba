@@ -4,6 +4,7 @@ import { action } from '@ember/object';
 import { pageTitle } from 'ember-page-title';
 import { LinkTo } from '@ember/routing';
 import { on } from '@ember/modifier';
+import NotificationContainer from 'aplicacion-prueba/components/ui/notification';
 
 export default class Application extends Component {
   @service session;
@@ -18,6 +19,7 @@ export default class Application extends Component {
     {{pageTitle "Lujan Motors - Concesionario Premium"}}
 
     <div class="app-container">
+      <NotificationContainer />
       <header class="app-header">
         <div class="app-header__brand">
           <div class="app-header__logo">LM</div>
@@ -51,11 +53,16 @@ export default class Application extends Component {
                 📞 Contacto
               </LinkTo>
             </li>
+            <li class="app-nav__item">
+              <LinkTo @route="vehicles" class="app-nav__link">
+                🚙 Gestión Vehículos
+              </LinkTo>
+            </li>
             
             {{#if this.session.isAuthenticated}}
               <li class="app-nav__item">
                 <button type="button" class="app-nav__link btn-link" {{on "click" this.logout}}>
-                  🚪 Salir ({{this.session.currentUser.username}})
+                  🚪 Salir ({{this.session.currentUser.name}})
                 </button>
               </li>
             {{else}}
