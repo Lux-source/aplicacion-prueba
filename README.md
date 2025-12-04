@@ -1,55 +1,173 @@
-# aplicacion-prueba
+# Aplicación Ember - Paquete P2
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+## 📋 Descripción del Proyecto
 
-## Prerequisites
+Esta es una aplicación de demostración desarrollada con **Ember.js** para el **Paquete P2** del curso de Tecnologías Web. La aplicación consume la API de JSONPlaceholder para mostrar una lista de artículos con funcionalidades de búsqueda, filtrado y visualización.
 
-You will need the following things properly installed on your computer.
+## 🎯 Características Implementadas (Paquete P2)
 
+### Modelo de Datos
+- **Article Model**: Modelo completo con atributos `userId`, `title`, `body`, `description`, `slug`, `createdAt`, `updatedAt`, `favorited`, `favoritesCount`, y `tagList`.
+- Propiedades computadas: `excerpt` para extractos y `hasContent` para validación.
+
+### Componentes Glimmer (GJS)
+- **ArticleCard**: Componente para mostrar una tarjeta individual de artículo.
+- **ArticleList**: Componente contenedor con funcionalidad de búsqueda y filtrado en tiempo real.
+
+### Rutas y Navegación
+- **Ruta Articles**: Carga los artículos desde la API usando Ember Data.
+- **Router configurado**: Con rutas para `index` y `articles`.
+
+### Controladores
+- **ArticlesController**: Maneja el ordenamiento y selección de artículos.
+
+### Adapter y Serializer
+- **ApplicationAdapter**: Configurado para conectar con JSONPlaceholder API.
+- **ArticleSerializer**: Transforma los datos de la API al formato del modelo.
+
+### Estilos
+- **CSS moderno**: Variables CSS, diseño responsive, animaciones y BEM methodology.
+
+### Tests
+- Tests unitarios para modelo, adapter, serializer, route y controller.
+- Tests de integración para componentes ArticleCard y ArticleList.
+
+## 🛠️ Tecnologías Utilizadas
+
+- **Ember.js 6.x** - Framework JavaScript
+- **Ember Data** - Gestión de datos
+- **Glimmer Components** - Componentes modernos con GJS
+- **Vite** - Bundler y servidor de desarrollo
+- **QUnit** - Framework de testing
+
+## 📁 Estructura del Proyecto
+
+```
+app/
+├── adapters/
+│   └── application.js      # Adapter REST para JSONPlaceholder
+├── components/
+│   ├── article-card.gjs    # Componente tarjeta de artículo
+│   └── article-list.gjs    # Componente lista con búsqueda
+├── controllers/
+│   └── articles.js         # Controller de artículos
+├── models/
+│   └── article.js          # Modelo de artículo
+├── routes/
+│   └── articles.js         # Ruta de artículos
+├── serializers/
+│   └── article.js          # Serializer para API
+├── styles/
+│   └── app.css             # Estilos de la aplicación
+├── templates/
+│   ├── application.gjs     # Template principal
+│   └── articles.gjs        # Template de artículos
+└── transforms/
+    ├── boolean.js
+    ├── date.js
+    ├── number.js
+    └── string.js
+```
+
+## 🚀 Instalación y Ejecución
+
+### Prerrequisitos
+
+- [Node.js](https://nodejs.org/) (v18+)
+- [Yarn](https://yarnpkg.com/) o npm
 - [Git](https://git-scm.com/)
-- [Node.js](https://nodejs.org/)
-- [Yarn](https://yarnpkg.com/)
-- [Google Chrome](https://google.com/chrome/)
 
-## Installation
+### Instalación
 
-- `git clone <repository-url>` this repository
-- `cd aplicacion-prueba`
-- `yarn install`
+```bash
+# Clonar el repositorio
+git clone <repository-url>
+cd aplicacion-prueba
 
-## Running / Development
+# Instalar dependencias
+yarn install
+```
 
-- `yarn start`
-- Visit your app at [http://localhost:4200](http://localhost:4200).
-- Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
+### Ejecución en Desarrollo
 
-### Code Generators
+```bash
+# Iniciar servidor de desarrollo
+yarn start
 
-Make use of the many generators for code, try `yarn ember help generate` for more details
+# La aplicación estará disponible en:
+# http://localhost:4200
+```
 
-### Running Tests
+**Nota para Windows**: Si encuentras errores de symlinks, activa el **Modo Desarrollador** en Windows:
+- Configuración → Privacidad y seguridad → Para desarrolladores → Activar Modo de desarrollador
 
-- `yarn test`
+### Ejecutar Tests
+
+```bash
+# Ejecutar todos los tests
+yarn test
+
+# Ejecutar tests en modo watch
+yarn test --server
+```
 
 ### Linting
 
-- `yarn lint`
-- `yarn lint:fix`
+```bash
+# Verificar código
+yarn lint
 
-### Building
+# Corregir errores automáticamente
+yarn lint:fix
+```
 
-- `yarn vite build --mode development` (development)
-- `yarn build` (production)
+### Build para Producción
 
-### Deploying
+```bash
+# Build de producción
+yarn build
 
-Specify what it takes to deploy your app.
+# Build de desarrollo
+yarn vite build --mode development
+```
 
-## Further Reading / Useful Links
+## 📡 API Utilizada
 
-- [ember.js](https://emberjs.com/)
-- [Vite](https://vite.dev)
-- Development Browser Extensions
-  - [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  - [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+La aplicación consume la API de **JSONPlaceholder**:
+- **Base URL**: https://jsonplaceholder.typicode.com
+- **Endpoint**: `/posts` (mapeado a `articles`)
+
+### Ejemplo de respuesta de la API:
+```json
+{
+  "userId": 1,
+  "id": 1,
+  "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+  "body": "quia et suscipit\nsuscipit recusandae consequuntur..."
+}
+```
+
+## 🔧 Configuración
+
+### Cambiar la API
+Edita `app/adapters/application.js`:
+```javascript
+export default class ApplicationAdapter extends RESTAdapter {
+  host = 'https://tu-api.com';
+}
+```
+
+## 📚 Documentación Adicional
+
+- [Ember.js Guides](https://guides.emberjs.com/)
+- [Ember Data](https://guides.emberjs.com/release/models/)
+- [Glimmer Components](https://guides.emberjs.com/release/components/)
+- [JSONPlaceholder](https://jsonplaceholder.typicode.com/)
+
+## 👨‍💻 Autor
+
+Desarrollado para el curso de **Tecnologías Web** - Paquete P2
+
+## 📄 Licencia
+
+Este proyecto es de uso educativo.

@@ -1,18 +1,28 @@
 import { pageTitle } from 'ember-page-title';
+import ArticleList from 'aplicacion-prueba/components/article-list';
 
+/**
+ * Template de la ruta Articles
+ * Paquete P2: Utiliza el componente ArticleList para mostrar los artículos
+ */
 <template>
-  {{pageTitle "Articles"}}
+  {{pageTitle "Artículos - Aplicación Ember P2"}}
 
-  <h1>Articles</h1>
+  <main class="articles-page">
+    <header class="articles-page__header">
+      <h1 class="articles-page__title">📚 Artículos</h1>
+      <p class="articles-page__subtitle">
+        Listado de artículos obtenidos desde JSONPlaceholder API
+      </p>
+    </header>
 
-  <ul>
-    {{#each @model as |article|}}
-      <li>
-        <h3>{{article.title}}</h3>
-        <p>{{article.description}}</p>
-      </li>
-    {{/each}}
-  </ul>
+    <section class="articles-page__content">
+      <ArticleList 
+        @articles={{@model}} 
+        @title="Artículos Disponibles"
+      />
+    </section>
+  </main>
 
   {{outlet}}
 </template>
