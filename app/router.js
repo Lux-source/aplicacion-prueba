@@ -25,4 +25,7 @@ Router.map(function () {
   // Autenticación
   this.route('login');
   this.route('register');
+
+  // Ruta 404 - Captura todas las URLs no encontradas (debe ir al final)
+  this.route('not-found', { path: '/*path' });
 });
