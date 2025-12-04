@@ -12,4 +12,11 @@ Router.map(function () {
   this.route('contact');    // Contáctanos
   this.route('catalog');    // Catálogo de vehículos
   this.route('configurator'); // Configurador de vehículos
+
+  // Nuevas funcionalidades
+  this.route('login');
+  this.route('register');
+  this.route('vehicles', function () {
+    this.route('new');
+  });
 });

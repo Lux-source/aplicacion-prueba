@@ -42,6 +42,21 @@ import { LinkTo } from '@ember/routing';
               📞 Contacto
             </LinkTo>
           </li>
+        <li class="app-nav__item">
+            <LinkTo @route="vehicles" class="app-nav__link">
+              🚙 Gestión Vehículos
+            </LinkTo>
+          </li>
+          <li class="app-nav__item">
+            <LinkTo @route="login" class="app-nav__link">
+              🔑 Iniciar Sesión
+            </LinkTo>
+          </li>
+          <li class="app-nav__item">
+            <LinkTo @route="register" class="app-nav__link">
+              📝 Registrarse
+            </LinkTo>
+          </li>
         </ul>
       </nav>
 
